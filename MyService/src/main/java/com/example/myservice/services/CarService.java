@@ -23,4 +23,14 @@ public class CarService {
     public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
+
+    public boolean removeCar(String plateNumber) {
+        return cars.removeIf(car -> car.getPlateNumber().equals(plateNumber));
+    }
+
+    public List<Car> getCarsByBrand(String brand) {
+        return cars.stream()
+                .filter(car -> car.getBrand().equalsIgnoreCase(brand))
+                .toList();
+    }
 }
