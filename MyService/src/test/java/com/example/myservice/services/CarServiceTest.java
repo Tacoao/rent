@@ -51,11 +51,35 @@ public class CarServiceTest {
         Car car1 = new Car("ABC123", "Toyota", 15000.0);
         Car car2 = new Car("XYZ789", "Honda", 18000.0);
         Car car3 = new Car("DEF456", "Ford", 20000.0);
-        
+
         carService.addCar(car1);
         carService.addCar(car2);
         carService.addCar(car3);
-        
+
         assertEquals(3, carService.getCars().size());
+    }
+
+    @Test
+    public void testRemoveCar() {
+        Car car = new Car("ABC123", "Toyota", 15000.0);
+        carService.addCar(car);
+        assertTrue(carService.removeCar("ABC123"));
+        assertEquals(0, carService.getCars().size());
+    }
+
+    @Test
+    public void testRemoveCarNotFound() {
+        assertFalse(carService.removeCar("NOTFOUND"));
+    }
+
+    @Test
+    public void testGetCarsByBrand() {
+        carService.addCar(new Car("ABC123", "Toyota", 15000.0));
+        carService.addCar(new Car("DEF456", "Toyota", 22000.0));
+        carService.addCar(new Car("XYZ789", "Honda", 18000.0));
+
+        assertEquals(2, carService.getCarsByBrand("Toyota").size());
+        assertEquals(1, carService.getCarsByBrand("Honda").size());
+        assertEquals(0, carService.getCarsByBrand("Ford").size());
     }
 }
