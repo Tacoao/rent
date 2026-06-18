@@ -58,7 +58,7 @@ jobs:
           projectBaseDir: MyService
           args: >
             -Dsonar.projectKey=Tacoao_rent
-            -Dsonar.organization=Tacoao
+            -Dsonar.organization=tacoao
             -Dsonar.sources=src/main/java
             -Dsonar.tests=src/test/java
             -Dsonar.java.binaries=build/classes
